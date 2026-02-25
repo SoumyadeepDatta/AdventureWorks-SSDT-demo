@@ -171,4 +171,4 @@ This repository demonstrates a complete SSDT workflow:
 
 ## 🔗 Useful References
 
-- AdventureWorks sample databases download and instructions :contentReference[oaicite:1]{index=1}
+- AdventureWorks sample databases download and instructions :contentReference https://learn.microsoft.com/en-us/sql/samples/adventureworks-install-configure?view=sql-server-ver17&tabs=ssms
