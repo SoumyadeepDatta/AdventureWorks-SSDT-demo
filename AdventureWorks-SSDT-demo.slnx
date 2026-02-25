@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AdventureWorks-SSDT-demo/AdventureWorks-SSDT-demo.sqlproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
