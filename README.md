@@ -50,26 +50,220 @@ Before you begin, install:
 3. Click **Start**.  
 4. Visual Studio generates schema files for each object and creates folders accordingly.
 
-Typical folder structure after import:
+Typical folder structure:
 
 ```
-AdventureWorks.Database/
-├── Properties/
-├── References/
-├── Schema Objects/
-│   ├── Tables/
-│   ├── Views/
-│   ├── Stored Procedures/
-│   ├── Functions/
-│   ├── Types/
-│   ├── Security/
-│   └── (other object types)
-├── Scripts/
-│   ├── Pre-Deployment/
-│   │   └── Script.PreDeployment.sql
-│   └── Post-Deployment/
-│       └── Script.PostDeployment.sql
-└── AdventureWorks.Database.sqlproj
+\
+|   .gitattributes
+|   .gitignore
+|   AdventureWorks-SSDT-demo.slnx
+|   README.md
+|   structure.txt
+|   
+\---AdventureWorks-SSDT-demo
+    |   AdventureWorks-SSDT-demo.dbmdl
+    |   AdventureWorks-SSDT-demo.jfm
+    |   AdventureWorks-SSDT-demo.sqlproj
+    |   AdventureWorks-SSDT-demo.sqlproj.user
+    |   ExtendedProperties.sql
+    |   FullTextIndexes.sql
+    |   
+    +---bin
+    |   \---Debug
+    |           AdventureWorks-SSDT-demo.dacpac
+    |           AdventureWorks_SSDT_demo.dll
+    |           AdventureWorks_SSDT_demo.pdb
+    |           
+    +---Database Triggers
+    |       ddlDatabaseTriggerLog.sql
+    |       
+    +---dbo
+    |   +---Functions
+    |   |       ufnGetAccountingEndDate.sql
+    |   |       ufnGetAccountingStartDate.sql
+    |   |       ufnGetContactInformation.sql
+    |   |       ufnGetDocumentStatusText.sql
+    |   |       ufnGetProductDealerPrice.sql
+    |   |       ufnGetProductListPrice.sql
+    |   |       ufnGetProductStandardCost.sql
+    |   |       ufnGetPurchaseOrderStatusText.sql
+    |   |       ufnGetSalesOrderStatusText.sql
+    |   |       ufnGetStock.sql
+    |   |       ufnLeadingZeros.sql
+    |   |       
+    |   +---Stored Procedures
+    |   |       uspGetBillOfMaterials.sql
+    |   |       uspGetEmployeeManagers.sql
+    |   |       uspGetManagerEmployees.sql
+    |   |       uspGetWhereUsedProductID.sql
+    |   |       uspLogError.sql
+    |   |       uspPrintError.sql
+    |   |       uspSearchCandidateResumes.sql
+    |   |       
+    |   +---Tables
+    |   |       AWBuildVersion.sql
+    |   |       DatabaseLog.sql
+    |   |       ErrorLog.sql
+    |   |       
+    |   \---User Defined Types
+    |           AccountNumber.sql
+    |           Flag.sql
+    |           Name.sql
+    |           NameStyle.sql
+    |           OrderNumber.sql
+    |           Phone.sql
+    |           
+    +---HumanResources
+    |   +---Stored Procedures
+    |   |       uspUpdateEmployeeHireInfo.sql
+    |   |       uspUpdateEmployeeLogin.sql
+    |   |       uspUpdateEmployeePersonalInfo.sql
+    |   |       
+    |   +---Tables
+    |   |       Department.sql
+    |   |       Employee.sql
+    |   |       EmployeeDepartmentHistory.sql
+    |   |       EmployeePayHistory.sql
+    |   |       JobCandidate.sql
+    |   |       Shift.sql
+    |   |       
+    |   +---Views
+    |   |       vEmployee.sql
+    |   |       vEmployeeDepartment.sql
+    |   |       vEmployeeDepartmentHistory.sql
+    |   |       vJobCandidate.sql
+    |   |       vJobCandidateEducation.sql
+    |   |       vJobCandidateEmployment.sql
+    |   |       
+    |   \---XMLSchemaCollections
+    |           HRResumeSchemaCollection.sql
+    |           
+    +---Import Schema Logs
+    |       AdventureWorks-SSDT-_20260225111308.log
+    |       
+    +---obj
+    |   \---Debug
+    |           AdventureWorks-SSDT-demo.sqlproj.AssemblyReference.cache
+    |           AdventureWorks-SSDT-demo.sqlproj.FileListAbsolute.txt
+    |           AdventureWorks_SSDT_demo.dll
+    |           AdventureWorks_SSDT_demo.pdb
+    |           
+    +---Person
+    |   +---Tables
+    |   |       Address.sql
+    |   |       AddressType.sql
+    |   |       BusinessEntity.sql
+    |   |       BusinessEntityAddress.sql
+    |   |       BusinessEntityContact.sql
+    |   |       ContactType.sql
+    |   |       CountryRegion.sql
+    |   |       EmailAddress.sql
+    |   |       Password.sql
+    |   |       Person.sql
+    |   |       PersonPhone.sql
+    |   |       PhoneNumberType.sql
+    |   |       StateProvince.sql
+    |   |       
+    |   +---Views
+    |   |       vAdditionalContactInfo.sql
+    |   |       vStateProvinceCountryRegion.sql
+    |   |       
+    |   \---XMLSchemaCollections
+    |           AdditionalContactInfoSchemaCollection.sql
+    |           IndividualSurveySchemaCollection.sql
+    |           
+    +---Production
+    |   +---Tables
+    |   |       BillOfMaterials.sql
+    |   |       Culture.sql
+    |   |       Document.sql
+    |   |       Illustration.sql
+    |   |       Location.sql
+    |   |       Product.sql
+    |   |       ProductCategory.sql
+    |   |       ProductCostHistory.sql
+    |   |       ProductDescription.sql
+    |   |       ProductDocument.sql
+    |   |       ProductInventory.sql
+    |   |       ProductListPriceHistory.sql
+    |   |       ProductModel.sql
+    |   |       ProductModelIllustration.sql
+    |   |       ProductModelProductDescriptionCulture.sql
+    |   |       ProductPhoto.sql
+    |   |       ProductProductPhoto.sql
+    |   |       ProductReview.sql
+    |   |       ProductSubcategory.sql
+    |   |       ScrapReason.sql
+    |   |       TransactionHistory.sql
+    |   |       TransactionHistoryArchive.sql
+    |   |       UnitMeasure.sql
+    |   |       WorkOrder.sql
+    |   |       WorkOrderRouting.sql
+    |   |       
+    |   +---Views
+    |   |       vProductAndDescription.sql
+    |   |       vProductModelCatalogDescription.sql
+    |   |       vProductModelInstructions.sql
+    |   |       
+    |   \---XMLSchemaCollections
+    |           ManuInstructionsSchemaCollection.sql
+    |           ProductDescriptionSchemaCollection.sql
+    |           
+    +---Purchasing
+    |   +---Tables
+    |   |       ProductVendor.sql
+    |   |       PurchaseOrderDetail.sql
+    |   |       PurchaseOrderHeader.sql
+    |   |       ShipMethod.sql
+    |   |       Vendor.sql
+    |   |       
+    |   \---Views
+    |           vVendorWithAddresses.sql
+    |           vVendorWithContacts.sql
+    |           
+    +---Sales
+    |   +---Tables
+    |   |       CountryRegionCurrency.sql
+    |   |       CreditCard.sql
+    |   |       Currency.sql
+    |   |       CurrencyRate.sql
+    |   |       Customer.sql
+    |   |       PersonCreditCard.sql
+    |   |       SalesOrderDetail.sql
+    |   |       SalesOrderHeader.sql
+    |   |       SalesOrderHeaderSalesReason.sql
+    |   |       SalesPerson.sql
+    |   |       SalesPersonQuotaHistory.sql
+    |   |       SalesReason.sql
+    |   |       SalesTaxRate.sql
+    |   |       SalesTerritory.sql
+    |   |       SalesTerritoryHistory.sql
+    |   |       ShoppingCartItem.sql
+    |   |       SpecialOffer.sql
+    |   |       SpecialOfferProduct.sql
+    |   |       Store.sql
+    |   |       
+    |   +---Views
+    |   |       vIndividualCustomer.sql
+    |   |       vPersonDemographics.sql
+    |   |       vSalesPerson.sql
+    |   |       vSalesPersonSalesByFiscalYears.sql
+    |   |       vStoreWithAddresses.sql
+    |   |       vStoreWithContacts.sql
+    |   |       vStoreWithDemographics.sql
+    |   |       
+    |   \---XMLSchemaCollections
+    |           StoreSurveySchemaCollection.sql
+    |           
+    +---Security
+    |       HumanResources.sql
+    |       Person.sql
+    |       Production.sql
+    |       Purchasing.sql
+    |       Sales.sql
+    |       
+    \---Storage
+            AW2025FullTextCatalog.sql
 ```
 
 ---
@@ -133,14 +327,61 @@ SSDT projects manage only **schema** by default. To include data:
 
 1. In SSMS, right-click `AdventureWorks` → **Tasks → Generate Scripts**.  
 2. In **Advanced**, set **Types of data to script → Data only**.  
-3. Save the file.  
+3. Select the option to save it into a single file.  
 4. Copy the generated INSERT statements into:
 
 ```
 Scripts/Post-Deployment/Script.PostDeployment.sql
 ```
 
-Data will be applied after schema deployment.
+## ✅ How To Create Post-Deployment Script (Correct Way)
+
+### In Visual Studio
+
+1. Right-click the project **AdventureWorks-SSDT-demo**  
+   (Make sure you right-click the project, not the solution.)
+
+2. Click:
+
+   Add → Script
+
+3. Choose:
+
+   Post-Deployment Script
+
+4. Click **Add**
+
+---
+
+### What Happens Next?
+
+Visual Studio will automatically create a file named:
+
+PostDeployment.sql
+
+This file is usually created at the **root level of the project** (same level as the `.sqlproj` file).
+
+It will also automatically update the `.sqlproj` file with this entry:
+
+```xml
+<PostDeploy Include="PostDeployment.sql" />
+```
+
+This line is very important because it tells SSDT to execute the `PostDeployment.sql` file automatically **after schema deployment** during Publish.
+
+---
+
+### Where to Add Data Scripts
+
+Open `PostDeployment.sql` and paste your generated `INSERT` statements (for seed or reference data) into this file.
+
+When you right-click the project and choose **Publish**, SSDT will:
+
+1. Deploy schema (tables, views, procedures, etc.)
+2. Then execute `PostDeployment.sql` automatically
+
+⚠ Important: The script runs every time you publish.  
+To avoid duplicate data errors, wrap inserts using `IF NOT EXISTS`.
 
 ### 📌 Option B — Use a BACPAC
 
