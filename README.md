@@ -389,6 +389,45 @@ To move schema + data together, export a `.bacpac` from SSMS → **Tasks → Exp
 
 ---
 
+## ✅ Correct Way After Adding a New Table in AdventureWorks
+
+Let’s say: You already imported AdventureWorks into an SSDT database project. SSDT generated all the `.sql` files. Now you manually create a new table in the live database (via SSMS).
+
+### 🔄 What You Should Do
+
+1. Open Schema Compare In Visual Studio:
+   
+   Tools → SQL Server → New Schema Comparison
+
+2. Set Source and Target
+
+   Source → Your live database (AdventureWorks)
+   
+   Target → Your SSDT project
+
+4. Click Compare and SSDT will detect:
+   - The new table
+   - Any other differences
+
+5. Click **Update**. This will:
+   - Automatically generate a new `.sql` file
+   - Add it inside your project (usually under Tables folder)
+
+**You do NOT need to:**
+- Re-import
+- Manually create file
+- Copy paste scripts
+
+### ❌ Why Not Re-Import?
+
+If you re-import:
+- It regenerates entire database scripts
+- Risk of overwriting changes
+- Not version-control friendly
+- Bad practice in team environment
+
+---
+
 ## 🧠 Key Concepts
 
 - SSDT projects store **schema**, not data.  
